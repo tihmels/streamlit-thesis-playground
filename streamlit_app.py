@@ -7,14 +7,13 @@ videos = glob.glob(VIDEO_DIR + "/*.mp4")
 
 t = st.empty()
 
-def load_main_page(video):
+def load_video(video):
     video_file = open(video, 'rb')
     video_bytes = video_file.read()
 
     t.video(video_bytes)
 
 add_selectbox = st.sidebar.selectbox(
-    "Select a video", videos, format_func = lambda l:l.split("/", 1)[1], on_change=load_main_page
-)
+    "Select a video", videos, format_func = lambda l:l.split("/", 1)[1], on_change=load_video)
 
 st.title("TEST")
