@@ -1,24 +1,20 @@
-import streamlit as st
-import time
 import glob
+
+import streamlit as st
 
 VIDEO_DIR = "videos"
 videos = glob.glob(VIDEO_DIR + "/*.mp4")
 
-t = st.empty()
+st.title("Thesis Playground")
 
 
 def load_video(video):
-    t.write("called")
     video_file = open(video, 'rb')
     video_bytes = video_file.read()
 
     st.video(video_bytes)
 
 
-option = st.sidebar.selectbox(
-    "Select a video", videos, format_func=lambda l: l.split("/", 1)[1], on_change=load_video)
+option = st.sidebar.selectbox("Select a video", videos, format_func=lambda l: l.split("/", 1)[1])
 
-st.write('You selected:', option)
-
-st.title("Thesis Playground")
+load_video(option)
