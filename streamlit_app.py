@@ -1,5 +1,5 @@
 import glob
-
+import cv2
 import streamlit as st
 
 VIDEO_DIR = "videos"
@@ -14,7 +14,27 @@ def load_video(video):
 
     st.video(video_bytes)
 
+    cap = cv2.VideoCapture(video)
 
-option = st.sidebar.selectbox("Select a video", videos, format_func=lambda l: l.split("/", 1)[1])
+    if cap.isOpened():
+        width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        total_frames = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+
+        st.write("Width: " + width)
+        st.write("Height: " + height)
+        st.write("FPS: " + fps)
+        st.write("Total Frames: " + total_frames)
+
+    # success, image = cap.read()
+    # count = 0
+
+    # while success:
+    #  success, image = cap.read()
+    #  count += 1
+
+
+option = st.sidebar.selectbox("Select video", videos, format_func=lambda l: l.split("/", 1)[1])
 
 load_video(option)
