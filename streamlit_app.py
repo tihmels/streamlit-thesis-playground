@@ -9,7 +9,7 @@ t = st.empty()
 
 
 def load_video(video):
-    st.write("called")
+    t.write("called")
     video_file = open(video, 'rb')
     video_bytes = video_file.read()
 
