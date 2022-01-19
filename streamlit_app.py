@@ -19,4 +19,6 @@ def load_video(video):
 option = st.sidebar.selectbox(
     "Select a video", videos, format_func=lambda l: l.split("/", 1)[1], on_change=load_video)
 
+st.write('You selected:', option)
+
 st.title("Thesis Playground")
