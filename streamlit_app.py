@@ -35,7 +35,7 @@ def load_video(video):
         st.write("Number of frames: " + str(frame_count))
         st.write('Duration (S) = ' + str(duration))
         minutes = int(duration / 60)
-        seconds = duration % 60
+        seconds = int(duration % 60)
         st.write('Duration (M:S) = ' + str(minutes) + ':' + str(seconds))
 
     # success, image = cap.read()
