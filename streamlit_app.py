@@ -1,5 +1,5 @@
 import glob
-
+from datetime import time
 import cv2
 import streamlit as st
 
@@ -32,11 +32,15 @@ def load_video(video):
         st.write("Width: " + str(frame_width))
         st.write("Height: " + str(frame_height))
         st.write("FPS: " + str(fps))
-        st.write("Number of frames: " + str(frame_count))
+        st.write("Frame count: " + str(frame_count))
         st.write('Duration (S) = ' + str(duration))
         minutes = int(duration / 60)
         seconds = int(duration % 60)
         st.write('Duration (M:S) = ' + str(minutes) + ':' + str(seconds))
+
+    appointment = st.slider(
+        "Schedule your appointment:",
+        value=(time(0, 0), time(minutes, seconds)))
 
     # success, image = cap.read()
     # count = 0
