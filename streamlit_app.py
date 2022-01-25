@@ -3,20 +3,8 @@ import glob
 import cv2
 import streamlit as st
 
-st.set_page_config(page_title="Thesis Playground",
-                   page_icon="🧊",
-                   layout="wide",
-                   initial_sidebar_state="expanded",
-                   menu_items={
-                       'Get Help': 'https://www.extremelycoolapp.com/help',
-                       'Report a bug': "https://www.extremelycoolapp.com/bug",
-                       'About': "# This is a header. This is an *extremely* cool app!"
-                   })
-
 VIDEO_DIR = "videos"
 videos = glob.glob(VIDEO_DIR + "/*.mp4")
-
-st.title("Thesis Playground")
 
 
 def main():
@@ -25,7 +13,7 @@ def main():
 
 
 def load_video(video):
-    st.subheader(video.split("/", 1)[1])
+    st.title(video.split("/", 1)[1])
 
     video_file = open(video, 'rb')
     video_bytes = video_file.read()
