@@ -30,10 +30,10 @@ def load_video(video):
         fps = cap.get(cv2.CAP_PROP_FPS)
         total_frames = cap.get(cv2.CAP_PROP_FRAME_COUNT)
 
-        st.write("Width: " + width)
-        st.write("Height: " + height)
-        st.write("FPS: " + fps)
-        st.write("Total Frames: " + total_frames)
+        st.write("Width: " + str(width))
+        st.write("Height: " + str(height))
+        st.write("FPS: " + str(fps))
+        st.write("Total Frames: " + str(total_frames))
 
     # success, image = cap.read()
     # count = 0
