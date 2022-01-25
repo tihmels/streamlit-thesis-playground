@@ -42,8 +42,12 @@ def load_video(video):
 
     appointment = st.slider(
         "Select video range:",
-        value=(time(11, 30), time(12, 45)),
-        step=timedelta(0, 1))
+        value=(time(0, 0), time(0, minutes, seconds)),
+        min_value=(time(0, 0, 0)),
+        max_value=(time(0, minutes, seconds)),
+        step=timedelta(0, 1),
+        format="mm:ss"
+    )
 
     # success, image = cap.read()
     # count = 0
