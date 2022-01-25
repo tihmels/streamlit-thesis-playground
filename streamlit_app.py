@@ -1,7 +1,17 @@
-import streamlit as st
 import glob
-import cv2
 
+import cv2
+import streamlit as st
+
+st.set_page_config(page_title="Thesis Playground",
+                   page_icon="🧊",
+                   layout="wide",
+                   initial_sidebar_state="expanded",
+                   menu_items={
+                       'Get Help': 'https://www.extremelycoolapp.com/help',
+                       'Report a bug': "https://www.extremelycoolapp.com/bug",
+                       'About': "# This is a header. This is an *extremely* cool app!"
+                   })
 
 VIDEO_DIR = "videos"
 videos = glob.glob(VIDEO_DIR + "/*.mp4")
