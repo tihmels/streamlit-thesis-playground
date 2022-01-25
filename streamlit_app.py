@@ -1,6 +1,5 @@
 import glob
 from datetime import time
-from datetime import timedelta
 
 import cv2
 import streamlit as st
@@ -40,10 +39,10 @@ def load_video(video):
         seconds = int(duration % 60)
         st.write('Duration (M:S) = ' + str(minutes) + ':' + str(seconds))
 
-    # appointment = st.slider(
-    #     "Schedule your appointment:",
-    #     min_value=(time(0, 0, 0)),
-    #    max_value=(time(0, minutes, seconds)))
+    appointment = st.slider(
+        "Schedule your appointment:",
+        min_value=(time(0, 0, 0)),
+        max_value=(time(0, minutes, seconds)))
 
     # success, image = cap.read()
     # count = 0
@@ -52,5 +51,6 @@ def load_video(video):
     #  success, image = cap.read()
     #  count += 1
 
-    if __name__ == "__main__":
-        main()
+
+if __name__ == "__main__":
+    main()
