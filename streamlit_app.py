@@ -42,7 +42,6 @@ def load_video(video):
         "Schedule your appointment:",
         min_value=(time(0, 0)),
         max_value=(time(minutes, seconds)),
-        value=(time(0, 0), time(minutes, seconds)),
         step=0.1)
 
     # success, image = cap.read()
