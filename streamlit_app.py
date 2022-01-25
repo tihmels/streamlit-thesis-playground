@@ -40,7 +40,10 @@ def load_video(video):
 
     appointment = st.slider(
         "Schedule your appointment:",
-        value=(time(0, 0), time(minutes, seconds)))
+        min_value=(time(0, 0)),
+        max_value=(time(minutes, seconds)),
+        value=(time(0, 0), time(minutes, seconds)),
+        step=0.1)
 
     # success, image = cap.read()
     # count = 0
@@ -49,6 +52,5 @@ def load_video(video):
     #  success, image = cap.read()
     #  count += 1
 
-
-if __name__ == "__main__":
-    main()
+    if __name__ == "__main__":
+        main()
