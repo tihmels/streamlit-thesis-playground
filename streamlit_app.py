@@ -23,15 +23,20 @@ def load_video(video):
     cap = cv2.VideoCapture(video)
 
     if cap.isOpened():
-        width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-        height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+        frame_width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        frame_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
         fps = cap.get(cv2.CAP_PROP_FPS)
-        total_frames = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+        frame_count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+        duration = frame_count / fps
 
-        st.write("Width: " + str(width))
-        st.write("Height: " + str(height))
+        st.write("Width: " + str(frame_width))
+        st.write("Height: " + str(frame_height))
         st.write("FPS: " + str(fps))
-        st.write("Total Frames: " + str(total_frames))
+        st.write("Number of frames: " + str(frame_count))
+        st.write('Duration (S) = ' + str(duration))
+        minutes = int(duration / 60)
+        seconds = duration % 60
+        st.write('Duration (M:S) = ' + str(minutes) + ':' + str(seconds))
 
     # success, image = cap.read()
     # count = 0
