@@ -41,10 +41,9 @@ def load_video(video):
         st.write('Duration (M:S) = ' + str(minutes) + ':' + str(seconds))
 
     appointment = st.slider(
-        "Schedule your appointment:",
-        value=(time(0, 0), time(0, minutes, seconds)),
-        min_value=time.min,
-        max_value=(time(0, minutes, seconds)), step=timedelta(0, 1))
+        "Select video range:",
+        value=(time(11, 30), time(12, 45)),
+        step=timedelta(0, 1))
 
     # success, image = cap.read()
     # count = 0
