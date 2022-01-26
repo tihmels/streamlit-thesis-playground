@@ -6,8 +6,7 @@ import cv2
 import streamlit as st
 
 st.set_page_config(
-    page_title="Ex-stream-ly Cool App",
-    page_icon="🧊",
+    page_title="Thesis Playground App",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
@@ -60,8 +59,6 @@ def load_video(video):
         step=timedelta(0, 1),
         format="mm:ss"
     )
-
-
 
     # success, image = cap.read()
     # count = 0
