@@ -5,6 +5,18 @@ from datetime import timedelta
 import cv2
 import streamlit as st
 
+st.set_page_config(
+    page_title="Ex-stream-ly Cool App",
+    page_icon="🧊",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
+)
+
 VIDEO_DIR = "videos"
 videos = glob.glob(VIDEO_DIR + "/*.mp4")
 
@@ -48,6 +60,8 @@ def load_video(video):
         step=timedelta(0, 1),
         format="mm:ss"
     )
+
+
 
     # success, image = cap.read()
     # count = 0
