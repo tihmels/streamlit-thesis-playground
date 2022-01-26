@@ -2,6 +2,7 @@ import glob
 from datetime import time
 from datetime import timedelta
 
+import pandas as pd
 import cv2
 import streamlit as st
 
@@ -39,6 +40,8 @@ def load_video(video):
         duration = frame_count / fps
         minutes = int(duration / 60)
         seconds = int(duration % 60)
+
+        st.table([[frame_width], [frame_height], [frame_count], [fps], [duration]])
 
         video_range = st.slider(
             "Select video range:",
