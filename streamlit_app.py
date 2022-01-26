@@ -41,8 +41,6 @@ def load_video(video):
         minutes = int(duration / 60)
         seconds = int(duration % 60)
 
-        st.table([[frame_width], [frame_height], [frame_count], [fps], [duration]])
-
         video_range = st.slider(
             "Select video range:",
             value=(time(0, 0), time(0, minutes, seconds)),
