@@ -1,9 +1,6 @@
 from dataclasses import dataclass, field
 
-from pydantic import validate_arguments
 
-
-@validate_arguments
 @dataclass
 class VideoData:
     frame_width: int

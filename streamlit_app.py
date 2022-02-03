@@ -46,26 +46,7 @@ def load_video(video):
 
         video_data = VideoData(frame_width, frame_height, frame_count, fps)
 
-        col1, col2 = st.sidebar.columns(2)
-
-        with col1:
-            st.text("Dimensions")
-            st.text("Total Frames")
-            st.text("FPS")
-            st.text("Duration (s)")
-            st.text("Duration (m:s)")
-
-        with col2:
-            st.markdown("<p style='text-align: right;'>" + str(video_data.frame_width) + " x " + str(frame_height) + "</p>",
-                        unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(video_data.frame_count) + "</p>",
-                        unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(video_data.fps) + "</p>",
-                        unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(video_data.duration) + "</p>",
-                        unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(video_data.minutes) + ":" + str(video_data.seconds) + "</p>",
-                        unsafe_allow_html=True)
+        set_sidebar_info(video_data)
 
         video_range = st.slider(
             "Select video range:",
@@ -82,6 +63,31 @@ def load_video(video):
         # while success:
         #  success, image = cap.read()
         #  count += 1
+
+
+def set_sidebar_info(video_data):
+
+    col1, col2 = st.sidebar.columns(2)
+
+    with col1:
+        st.text("Dimensions")
+        st.text("Total Frames")
+        st.text("FPS")
+        st.text("Duration (s)")
+        st.text("Duration (m:s)")
+
+    with col2:
+        st.markdown("<p style='text-align: right;'>" + str(video_data.frame_width) + " x " + str(
+            video_data.frame_height) + "</p>",
+                    unsafe_allow_html=True)
+        st.markdown("<p style='text-align: right;'>" + str(video_data.frame_count) + "</p>",
+                    unsafe_allow_html=True)
+        st.markdown("<p style='text-align: right;'>" + str(video_data.fps) + "</p>",
+                    unsafe_allow_html=True)
+        st.markdown("<p style='text-align: right;'>" + str(video_data.duration) + "</p>",
+                    unsafe_allow_html=True)
+        st.markdown("<p style='text-align: right;'>" + str(video_data.minutes) + ":" + str(video_data.seconds) + "</p>",
+                    unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
