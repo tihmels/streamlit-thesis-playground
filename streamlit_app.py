@@ -2,7 +2,6 @@ import glob
 from datetime import time
 from datetime import timedelta
 
-import pandas as pd
 import cv2
 import streamlit as st
 
@@ -19,6 +18,8 @@ def main():
     videos = glob.glob(VIDEO_DIR + "/*.mp4")
     selected_option = st.sidebar.selectbox("Select video for inspection", videos,
                                            format_func=lambda l: l.split("/", 1)[1])
+
+    print("TEST")
     load_video(selected_option)
 
 
