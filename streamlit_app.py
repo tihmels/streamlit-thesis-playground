@@ -51,6 +51,14 @@ def load_video(video):
             format="mm:ss"
         )
 
+        col1, col2 = st.sidebar.columns(2)
+
+        with col1:
+            st.text("Width")
+
+        with col2:
+            st.text(frame_width)
+
         st.sidebar.text("Width: " + str(frame_width))
         st.sidebar.text("Height: " + str(frame_height))
         st.sidebar.text("FPS: " + str(fps))
