@@ -5,6 +5,8 @@ from datetime import timedelta
 import cv2
 import streamlit as st
 
+from VideoData import VideoData
+
 st.set_page_config(
     page_title="Thesis Playground App",
     layout="wide",
@@ -34,13 +36,15 @@ def load_video(video):
     cap = cv2.VideoCapture(video)
 
     if cap.isOpened():
-        frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-        frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        fps = int(cap.get(cv2.CAP_PROP_FPS))
+        frame_width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        frame_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+        frame_count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+        fps = cap.get(cv2.CAP_PROP_FPS)
         duration = frame_count / fps
         minutes = int(duration / 60)
         seconds = int(duration % 60)
+
+        video_data = VideoData(frame_width, frame_height, frame_count, fps)
 
         col1, col2 = st.sidebar.columns(2)
 
@@ -52,15 +56,15 @@ def load_video(video):
             st.text("Duration (m:s)")
 
         with col2:
-            st.markdown("<p style='text-align: right;'>" + str(frame_width) + " x " + str(frame_height) + "</p>",
+            st.markdown("<p style='text-align: right;'>" + str(video_data.frame_width) + " x " + str(frame_height) + "</p>",
                         unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(frame_count) + "</p>",
+            st.markdown("<p style='text-align: right;'>" + str(video_data.frame_count) + "</p>",
                         unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(fps) + "</p>",
+            st.markdown("<p style='text-align: right;'>" + str(video_data.fps) + "</p>",
                         unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(duration) + "</p>",
+            st.markdown("<p style='text-align: right;'>" + str(video_data.duration) + "</p>",
                         unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(minutes) + ":" + str(seconds) + "</p>",
+            st.markdown("<p style='text-align: right;'>" + str(video_data.minutes) + ":" + str(video_data.seconds) + "</p>",
                         unsafe_allow_html=True)
 
         video_range = st.slider(
