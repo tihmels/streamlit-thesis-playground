@@ -37,19 +37,10 @@ def load_video(video):
         frame_width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
         frame_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
         frame_count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
-        fps = cap.get(cv2.CAP_PROP_FPS)
+        fps = int(cap.get(cv2.CAP_PROP_FPS))
         duration = frame_count / fps
         minutes = int(duration / 60)
         seconds = int(duration % 60)
-
-        video_range = st.slider(
-            "Select video range:",
-            value=(time(0, 0), time(0, minutes, seconds)),
-            min_value=(time(0, 0, 0)),
-            max_value=(time(0, minutes, seconds)),
-            step=timedelta(0, 1),
-            format="mm:ss"
-        )
 
         col1, col2 = st.sidebar.columns(2)
 
@@ -71,6 +62,15 @@ def load_video(video):
                         unsafe_allow_html=True)
             st.markdown("<p style='text-align: right;'>" + str(minutes) + ":" + str(seconds) + "</p>",
                         unsafe_allow_html=True)
+
+        video_range = st.slider(
+            "Select video range:",
+            value=(time(0, 0), time(0, minutes, seconds)),
+            min_value=(time(0, 0, 0)),
+            max_value=(time(0, minutes, seconds)),
+            step=timedelta(0, 1),
+            format="mm:ss"
+        )
 
         # success, image = cap.read()
         # count = 0
