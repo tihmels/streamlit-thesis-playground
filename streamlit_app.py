@@ -61,15 +61,15 @@ def load_video(video):
             st.text("Duration (m:s)")
 
         with col2:
-            st.markdown("<p style='text-align: right;'>" + str(frame_width) + " x " + str(frame_height) + "</p>",
+            st.markdown("<span style='text-align: right;'>" + str(frame_width) + " x " + str(frame_height) + "</span>",
                         unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(frame_count) + "</p>",
+            st.markdown("<span style='text-align: right;'>" + str(frame_count) + "</span>",
                         unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(fps) + "</p>",
+            st.markdown("<span style='text-align: right;'>" + str(fps) + "</span>",
                         unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(duration) + "</p>",
+            st.markdown("<span style='text-align: right;'>" + str(duration) + "</span>",
                         unsafe_allow_html=True)
-            st.markdown("<p style='text-align: right;'>" + str(minutes) + ":" + str(seconds) + "</p>",
+            st.markdown("<span style='text-align: right;'>" + str(minutes) + ":" + str(seconds) + "</span>",
                         unsafe_allow_html=True)
 
         # success, image = cap.read()
