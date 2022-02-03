@@ -36,23 +36,20 @@ def load_video(video):
     cap = cv2.VideoCapture(video)
 
     if cap.isOpened():
-        frame_width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-        frame_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
-        frame_count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
-        fps = cap.get(cv2.CAP_PROP_FPS)
-        duration = frame_count / fps
-        minutes = int(duration / 60)
-        seconds = int(duration % 60)
+        frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        fps = int(cap.get(cv2.CAP_PROP_FPS))
 
-        video_data = VideoData(frame_width, frame_height, frame_count, fps)
+        vd = VideoData(frame_width, frame_height, frame_count, fps)
 
-        set_sidebar_info(video_data)
+        set_sidebar_info(vd)
 
         video_range = st.slider(
             "Select video range:",
-            value=(time(0, 0), time(0, minutes, seconds)),
+            value=(time(0, 0), time(0, vd.minutes, vd.seconds)),
             min_value=(time(0, 0, 0)),
-            max_value=(time(0, minutes, seconds)),
+            max_value=(time(0, vd.minutes, vd.seconds)),
             step=timedelta(0, 1),
             format="mm:ss"
         )
