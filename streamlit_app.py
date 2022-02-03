@@ -1,6 +1,4 @@
 import glob
-from datetime import time
-from datetime import timedelta
 
 import cv2
 import streamlit as st
@@ -21,7 +19,6 @@ def main():
     selected_option = st.sidebar.selectbox("Select video for inspection", videos,
                                            format_func=lambda l: l.split("/", 1)[1])
 
-    print("TEST")
     load_video(selected_option)
 
 
@@ -39,14 +36,14 @@ def load_video(video):
 
     set_sidebar_info(vd)
 
-    video_range = st.slider(
-        "Select video range:",
-        value=(time(0, 0), time(0, vd.minutes, vd.seconds)),
-        min_value=(time(0, 0, 0)),
-        max_value=(time(0, vd.minutes, vd.seconds)),
-        step=timedelta(0, 1),
-        format="mm:ss"
-    )
+    # video_range = st.slider(
+    #    "Select video range:",
+    #    value=(time(0, 0), time(0, vd.minutes, vd.seconds)),
+    #    min_value=(time(0, 0, 0)),
+    #    max_value=(time(0, vd.minutes, vd.seconds)),
+    #    step=timedelta(0, 1),
+    #    format="mm:ss"
+    # )
 
     # success, image = cap.read()
     # count = 0
@@ -56,7 +53,7 @@ def load_video(video):
     #  count += 1
 
 
-def extract_video_data(cap):
+def extract_video_data(cap: cv2.VideoCapture):
     if cap.isOpened():
         frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -66,7 +63,7 @@ def extract_video_data(cap):
         return VideoData(frame_width, frame_height, frame_count, fps)
 
 
-def set_sidebar_info(video_data):
+def set_sidebar_info(video_data: VideoData):
     col1, col2 = st.sidebar.columns(2)
 
     with col1:
