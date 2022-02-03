@@ -51,9 +51,11 @@ def load_video(video):
             format="mm:ss"
         )
 
+        st.sidebar.markdown("---")
+
         col1, col2 = st.sidebar.columns(2)
 
-        st.sidebar.markdown("---")
+
 
         with col1:
             st.text("Width")
