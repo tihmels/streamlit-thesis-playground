@@ -34,9 +34,9 @@ def load_video(video):
     cap = cv2.VideoCapture(video)
 
     if cap.isOpened():
-        frame_width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
-        frame_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
-        frame_count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+        frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+        frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         fps = int(cap.get(cv2.CAP_PROP_FPS))
         duration = frame_count / fps
         minutes = int(duration / 60)
