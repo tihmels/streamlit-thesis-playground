@@ -51,24 +51,26 @@ def load_video(video):
             format="mm:ss"
         )
 
-        st.sidebar.markdown("---")
-
         col1, col2 = st.sidebar.columns(2)
 
-
-
         with col1:
-            st.text("Width")
+            st.text("Dimensions")
+            st.text("Total Frames")
+            st.text("FPS")
+            st.text("Duration (s)")
+            st.text("Duration (m:s)")
 
         with col2:
-            st.markdown("<p style='text-align: right;'>" + str(frame_width) + "</h1>", unsafe_allow_html=True)
-
-        st.sidebar.text("Width: " + str(frame_width))
-        st.sidebar.text("Height: " + str(frame_height))
-        st.sidebar.text("FPS: " + str(fps))
-        st.sidebar.text("Frames: " + str(frame_count))
-        st.sidebar.text('Duration (s) = ' + str(duration))
-        st.sidebar.text('Duration (m:s) = ' + str(minutes) + ':' + str(seconds))
+            st.markdown("<p style='text-align: right;'>" + str(frame_width) + " x " + str(frame_height) + "</p>",
+                        unsafe_allow_html=True)
+            st.markdown("<p style='text-align: right;'>" + str(frame_count) + "</p>",
+                        unsafe_allow_html=True)
+            st.markdown("<p style='text-align: right;'>" + str(fps) + "</p>",
+                        unsafe_allow_html=True)
+            st.markdown("<p style='text-align: right;'>" + str(duration) + "</p>",
+                        unsafe_allow_html=True)
+            st.markdown("<p style='text-align: right;'>" + str(minutes) + ":" + str(seconds) + "</p>",
+                        unsafe_allow_html=True)
 
         # success, image = cap.read()
         # count = 0
