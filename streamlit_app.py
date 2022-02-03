@@ -57,7 +57,7 @@ def load_video(video):
             st.text("Width")
 
         with col2:
-            st.text(frame_width)
+            st.markdown("<p style='text-align: right;'>" + str(frame_width) + "</h1>", unsafe_allow_html=True)
 
         st.sidebar.text("Width: " + str(frame_width))
         st.sidebar.text("Height: " + str(frame_height))
