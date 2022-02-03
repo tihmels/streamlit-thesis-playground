@@ -51,14 +51,12 @@ def load_video(video):
             format="mm:ss"
         )
 
-        with st.container():
-            st.write("Width: " + str(frame_width))
-            st.write("Height: " + str(frame_height))
-            st.write("FPS: " + str(fps))
-            st.write("Frames: " + str(frame_count))
-            st.write('Duration (s) = ' + str(duration))
-            st.write('Duration (m:s) = ' + str(minutes) + ':' + str(seconds))
-
+        st.sidebar.text("Width: " + str(frame_width))
+        st.sidebar.text("Height: " + str(frame_height))
+        st.sidebar.text("FPS: " + str(fps))
+        st.sidebar.text("Frames: " + str(frame_count))
+        st.sidebar.text('Duration (s) = ' + str(duration))
+        st.sidebar.text('Duration (m:s) = ' + str(minutes) + ':' + str(seconds))
 
         # success, image = cap.read()
         # count = 0
