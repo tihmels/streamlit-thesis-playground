@@ -27,8 +27,6 @@ def main():
 def extract_frames_from_video(cap):
     folder_exists = os.path.isdir(FRAMES_TMP)
 
-    print("Test")
-
     if not folder_exists:
         os.makedirs(FRAMES_TMP)
 
@@ -36,17 +34,9 @@ def extract_frames_from_video(cap):
     for f in tmp_files:
         os.remove(f)
 
-    currentframe = 0
+    ret, frame = cap.read()
 
-    while True:
-        ret, frame = cap.read()
-        if ret:
-            name = str(FRAMES_TMP) + '/' + str(currentframe) + '.jpg'
-            cv2.imwrite(name, frame)
-            currentframe += 1
-        else:
-            break
-    cap.release()
+    st.image(frame)
 
 
 def load_video(video):
