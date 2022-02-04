@@ -27,8 +27,9 @@ def main():
 def extract_frames_from_video(cap):
     folder_exists = os.path.isdir(FRAMES_TMP)
 
+    print("Test")
+
     if not folder_exists:
-        print("Folder created")
         os.makedirs(FRAMES_TMP)
 
     tmp_files = glob.glob(os.path.join(FRAMES_TMP, "*"))
