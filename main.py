@@ -25,18 +25,7 @@ def main():
     load_video(selected_option)
 
 
-def extract_frames_from_video(cap):
-    frames = []
 
-    ret = True
-    while ret:
-        ret, frame = cap.read()
-
-        if ret:
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            frames.append(frame)
-
-    return np.stack(frames, axis=0)
 
 
 def load_video(video):
