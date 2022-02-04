@@ -20,7 +20,7 @@ FRAMES_TMP = "tmp"
 def main():
     videos = glob.glob(os.path.join(VIDEO_DIR, "*.mp4"))
     selected_option = st.sidebar.selectbox("Select video for inspection", videos,
-                                           format_func=lambda l: l.split("/", 1)[1])
+                                           format_func=lambda l: l.split("/", 1)[1], index=1)
 
     load_video(selected_option)
 
@@ -41,7 +41,7 @@ def load_video(video):
 
     frames = extract_frames_from_video(cap)
 
-    st.write(len(frames))
+    st.write(frames.shape)
 
     # st.write(frames.shape)
 
@@ -81,9 +81,9 @@ def extract_frames_from_video(cap):
 
         if ret:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            # frames.append(frame)
+            frames.append(frame)
 
-    return frames
+    return np.stack(frames, axis=0)
 
 
 def set_sidebar_info(video_data: VideoData):
