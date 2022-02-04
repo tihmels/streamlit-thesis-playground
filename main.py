@@ -62,9 +62,7 @@ def load_video(video):
 
     set_sidebar_info(vd)
 
-    extract_frames_from_video(cap)
-
-    print(len(os.listdir(FRAMES_TMP)))
+    # extract_frames_from_video(cap)
 
     # video_range = st.slider(
     #    "Select video range:",
