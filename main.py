@@ -77,6 +77,7 @@ def extract_frames_from_video(cap):
     ret = True
     while ret:
         ret, frame = cap.read()
+        st.write(type(frame))
 
         if ret:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
