@@ -18,7 +18,7 @@ FRAMES_TMP = "./tmp/"
 def main():
     videos = glob.glob(VIDEO_DIR + "*.mp4")
     selected_option = st.sidebar.selectbox("Select video for inspection", videos,
-                                           format_func=lambda l: l.split("/", 1)[1])
+                                           format_func=lambda l: l.split("/", 1)[2])
 
     load_video(selected_option)
 
