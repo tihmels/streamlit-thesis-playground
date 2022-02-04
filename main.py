@@ -53,7 +53,7 @@ def load_video(video):
 
     set_sidebar_info(vd)
 
-    frames = extract_frames_from_video(cap)
+    # frames = extract_frames_from_video(cap)
 
     # st.write(frames.shape)
 
