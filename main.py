@@ -39,7 +39,9 @@ def load_video(video):
 
     set_sidebar_info(vd)
 
-    # frames = extract_frames_from_video(cap)
+    frames = extract_frames_from_video(cap)
+
+    st.write(len(frames))
 
     # st.write(frames.shape)
 
@@ -81,7 +83,7 @@ def extract_frames_from_video(cap):
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             # frames.append(frame)
 
-    return np.stack(frames, axis=0)
+    return frames
 
 
 def set_sidebar_info(video_data: VideoData):
