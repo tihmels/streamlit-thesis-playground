@@ -102,16 +102,16 @@ def set_sidebar_info(video_data: VideoData):
         st.text("Duration (m:s)")
 
     with col2:
-        st.markdown("<p style='text-align: right;'>" + str(video_data.frame_width) + " x " + str(
+        st.markdown("<p style='text-align: right; margin: 0'>" + str(video_data.frame_width) + " x " + str(
             video_data.frame_height) + "</p>",
                     unsafe_allow_html=True)
-        st.markdown("<p style='text-align: right;'>" + str(video_data.frame_count) + "</p>",
+        st.markdown("<p style='text-align: right; margin: 0'>" + str(video_data.frame_count) + "</p>",
                     unsafe_allow_html=True)
-        st.markdown("<p style='text-align: right;'>" + str(video_data.fps) + "</p>",
+        st.markdown("<p style='text-align: right; margin: 0'>" + str(video_data.fps) + "</p>",
                     unsafe_allow_html=True)
-        st.markdown("<p style='text-align: right;'>" + str(video_data.duration) + "</p>",
+        st.markdown("<p style='text-align: right; margin: 0'>" + str(video_data.duration) + "</p>",
                     unsafe_allow_html=True)
-        st.markdown("<p style='text-align: right;'>" + str(video_data.minutes) + ":" + str(video_data.seconds) + "</p>",
+        st.markdown("<p style='text-align: right; margin: 0'>" + str(video_data.minutes) + ":" + str(video_data.seconds) + "</p>",
                     unsafe_allow_html=True)
 
 
