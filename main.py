@@ -3,7 +3,6 @@ import os
 
 import cv2
 import streamlit as st
-import numpy as np
 
 from VideoData import VideoData
 
@@ -40,6 +39,8 @@ def load_video(video):
     set_sidebar_info(vd)
 
     frames = extract_frames_from_video(cap)
+
+    st.write(frames[0].dtype)
 
     # st.write(frames.shape)
 
