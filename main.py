@@ -2,7 +2,9 @@ import glob
 import os
 
 import cv2
+import numpy as np
 import streamlit as st
+from PIL import Image
 
 from VideoData import VideoData
 
@@ -34,6 +36,17 @@ def extract_frames_from_video(cap):
     for f in tmp_files:
         os.remove(f)
 
+    currentframe = 0
+    while True:
+        ret, frame = cap.read()
+        if ret:
+            name = str(FRAMES_TMP) + '/' + str(currentframe) + '.jpg'
+            cv2.imwrite(name, frame)
+            currentframe += 1
+        else:
+            break
+    cap.release()
+
 
 def load_video(video):
     st.title(video.split("/", 1)[1])
@@ -50,6 +63,8 @@ def load_video(video):
     set_sidebar_info(vd)
 
     extract_frames_from_video(cap)
+
+    print(len(os.listdir(FRAMES_TMP)))
 
     # video_range = st.slider(
     #    "Select video range:",
