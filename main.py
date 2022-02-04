@@ -11,8 +11,8 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-VIDEO_DIR = "videos"
-FRAMES_TMP = "tmp"
+VIDEO_DIR = "videos/"
+FRAMES_TMP = "tmp/"
 
 
 def main():
