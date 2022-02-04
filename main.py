@@ -2,9 +2,7 @@ import glob
 import os
 
 import cv2
-import numpy as np
 import streamlit as st
-from PIL import Image
 
 from VideoData import VideoData
 
@@ -30,6 +28,7 @@ def extract_frames_from_video(cap):
     folder_exists = os.path.isdir(FRAMES_TMP)
 
     if not folder_exists:
+        print("Folder created")
         os.makedirs(FRAMES_TMP)
 
     tmp_files = glob.glob(os.path.join(FRAMES_TMP, "*"))
@@ -37,6 +36,7 @@ def extract_frames_from_video(cap):
         os.remove(f)
 
     currentframe = 0
+
     while True:
         ret, frame = cap.read()
         if ret:
@@ -62,7 +62,7 @@ def load_video(video):
 
     set_sidebar_info(vd)
 
-    # extract_frames_from_video(cap)
+    extract_frames_from_video(cap)
 
     # video_range = st.slider(
     #    "Select video range:",
