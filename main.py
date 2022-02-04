@@ -79,7 +79,7 @@ def extract_frames_from_video(cap):
 
         if ret:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            # frames.append(frame)
+            frames.append(frame)
 
     return frames
 
