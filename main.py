@@ -3,6 +3,7 @@ import os
 
 import cv2
 import streamlit as st
+import numpy as np
 
 from VideoData import VideoData
 
@@ -40,7 +41,6 @@ def load_video(video):
 
     frames = extract_frames_from_video(cap)
 
-    st.write(frames[0])
 
     # st.write(frames.shape)
 
@@ -77,13 +77,12 @@ def extract_frames_from_video(cap):
     ret = True
     while ret:
         ret, frame = cap.read()
-        st.write(type(frame))
 
         if ret:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frames.append(frame)
 
-    return frames
+    return np.stack(frames)
 
 
 def set_sidebar_info(video_data: VideoData):
