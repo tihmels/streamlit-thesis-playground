@@ -25,16 +25,9 @@ def main():
 
 
 def extract_frames_from_video(cap):
-    folder_exists = os.path.isdir(FRAMES_TMP)
-
-    if not folder_exists:
-        os.makedirs(FRAMES_TMP)
-
-    tmp_files = glob.glob(os.path.join(FRAMES_TMP, "*"))
-    for f in tmp_files:
-        os.remove(f)
-
     ret, frame = cap.read()
+
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     st.image(frame)
 
