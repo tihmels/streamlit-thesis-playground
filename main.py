@@ -41,7 +41,7 @@ def load_video(video):
 
     frames = extract_frames_from_video(cap)
 
-    st.write(frames.shape)
+    st.write(str(frames.shape))
 
     # st.write(frames.shape)
 
