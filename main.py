@@ -1,4 +1,5 @@
 import glob
+import os
 
 import cv2
 import streamlit as st
@@ -11,12 +12,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-VIDEO_DIR = "videos/"
-FRAMES_TMP = "tmp/"
+VIDEO_DIR = "videos"
+FRAMES_TMP = "tmp"
 
 
 def main():
-    videos = glob.glob(VIDEO_DIR + "*.mp4")
+    videos = glob.glob(os.path.join(VIDEO_DIR, "*.mp4"))
     selected_option = st.sidebar.selectbox("Select video for inspection", videos,
                                            format_func=lambda l: l.split("/", 1)[1])
 
@@ -24,7 +25,14 @@ def main():
 
 
 def extract_frames_from_video(cap):
-    pass
+    folder_exists = os.path.isdir(FRAMES_TMP)
+
+    if not folder_exists:
+        os.makedirs(FRAMES_TMP)
+
+    tmp_files = glob.glob(os.path.join(FRAMES_TMP, "*"))
+    for f in tmp_files:
+        os.remove(f)
 
 
 def load_video(video):
@@ -40,7 +48,7 @@ def load_video(video):
     vd = extract_video_data(cap)
 
     set_sidebar_info(vd)
-    
+
     extract_frames_from_video(cap)
 
     # video_range = st.slider(
