@@ -25,9 +25,6 @@ def main():
     load_video(selected_option)
 
 
-
-
-
 def load_video(video):
     st.title(video.split("/", 1)[1])
 
@@ -71,6 +68,20 @@ def extract_video_data(cap: cv2.VideoCapture):
         fps = int(cap.get(cv2.CAP_PROP_FPS))
 
         return VideoData(frame_width, frame_height, frame_count, fps)
+
+
+def extract_frames_from_video(cap):
+    frames = []
+
+    ret = True
+    while ret:
+        ret, frame = cap.read()
+
+        if ret:
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            frames.append(frame)
+
+    return np.stack(frames, axis=0)
 
 
 def set_sidebar_info(video_data: VideoData):
