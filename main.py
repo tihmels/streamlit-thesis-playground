@@ -2,7 +2,6 @@ import glob
 import os
 
 import cv2
-import numpy as np
 import streamlit as st
 
 from VideoData import VideoData
@@ -36,7 +35,7 @@ def extract_frames_from_video(cap):
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frames.append(frame)
 
-    return np.stack(frames, axis=0)
+    return frames
 
 
 def load_video(video):
