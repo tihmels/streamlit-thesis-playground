@@ -11,15 +11,20 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-VIDEO_DIR = "videos"
+VIDEO_DIR = "./videos/"
+FRAMES_TMP = "./tmp/"
 
 
 def main():
-    videos = glob.glob(VIDEO_DIR + "/*.mp4")
+    videos = glob.glob(VIDEO_DIR + "*.mp4")
     selected_option = st.sidebar.selectbox("Select video for inspection", videos,
                                            format_func=lambda l: l.split("/", 1)[1])
 
     load_video(selected_option)
+
+
+def extract_frames_from_video(cap):
+    pass
 
 
 def load_video(video):
@@ -35,6 +40,8 @@ def load_video(video):
     vd = extract_video_data(cap)
 
     set_sidebar_info(vd)
+    
+    extract_frames_from_video(cap)
 
     # video_range = st.slider(
     #    "Select video range:",
