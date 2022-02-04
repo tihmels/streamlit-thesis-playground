@@ -41,8 +41,6 @@ def load_video(video):
 
     frames = extract_frames_from_video(cap)
 
-    st.write(str(frames))
-
     # st.write(frames.shape)
 
     # video_range = st.slider(
